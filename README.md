@@ -1,9 +1,10 @@
+## Note: mirrored files from the original 'question-tree' repo and in process of making compat with React, Gatsby, es6 etc
+
 ## Question Graph
 
 A project that uses a json formatted graph and json formatted questions to navigate conditional paths through a quiz or survey.
-Note - this version built w/ ES5 syntax. ES6 native version coming soon.
 
-[Project on Github Pages](https://hansbrough.github.io/question-tree/)
+[Original Question Tree Project on Github Pages](https://hansbrough.github.io/question-tree/)
 
 ### Overview of the Pieces
 
