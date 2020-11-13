@@ -49,28 +49,9 @@
     "criterion":"agave",
     "type":"radio"
   },
-  "plantId_4":{
-    "title":"Which of the following is the name of this plant?",
-    "media": [
-      {"type":"image", "src":"/assets/img/a_bracteosa_h_200.jpg"}
-    ],
-    "labels":[
-      {"title":"Agave celsii", "qid":"114"},
-      {"title":"Aloe vera", "qid":"115"},
-      {"title":"Agave bracteosa", "qid":"116"},
-      {"title":"Echeveria agavoides", "qid":"117"},
-      {"title":"Dudlyea brittonii", "qid":"118"}
-    ],
-    "actual":"116",
-    "category":"quiz",
-    "criterion":"agave",
-    "type":"radio",
-    "comment":"another chance at agave bracteosa w/a different picture."
-  },
 
-  "survey_results":{
+  "quiz_results":{
     "type":"summary",
     "qid":"10000"
   }
-
 }

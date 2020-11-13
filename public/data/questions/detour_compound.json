@@ -7,7 +7,7 @@
     "labels":[
       {"title":"Aloe aculeata", "qid":"105"},
       {"title":"Agave sp.", "qid":"106"},
-      {"title":"Echeveria x agave 'Compound'", "qid":"107", "next":"plantId_5"},
+      {"title":"Echeveria 'Fang'", "qid":"107"},
       {"title":"Gasteria baylissiana", "qid":"108"}
     ],
     "actual":"105",
@@ -23,7 +23,7 @@
     "labels":[
       {"title":"Aloe arborescens", "qid":"109"},
       {"title":"Aloe vera", "qid":"110"},
-      {"title":"Aloe africana", "qid":"111"},
+      {"title":"Detour", "qid":"111", "next":"plantId_4"},
       {"title":"Aloe brevifolia", "qid":"112"},
       {"title":"Aloe aculeata", "qid":"113"}
     ],
@@ -56,9 +56,9 @@
     ],
     "labels":[
       {"title":"Agave celsii", "qid":"114"},
-      {"title":"Aloe vera", "qid":"115"},
+      {"title":"Nested Detour 1", "qid":"115", "next":"plantId_5"},
       {"title":"Agave bracteosa", "qid":"116"},
-      {"title":"Echeveria agavoides", "qid":"117"},
+      {"title":"Nested Detour 2", "qid":"117","next":"plantId_6"},
       {"title":"Dudlyea brittonii", "qid":"118"}
     ],
     "actual":"116",
@@ -75,8 +75,8 @@
     "labels":[
       {"title":"Agave bracteosa 'Calamar'", "qid":"119"},
       {"title":"Aloe sp.", "qid":"120"},
-      {"title":"Agave bracteosa 'branch 1'", "qid":"121", "next":"plantId_6"},
-      {"title":"Echeveria 'branch 2'", "qid":"122", "next":"plantId_7"},
+      {"title":"Agave bracteosa", "qid":"121"},
+      {"title":"Echeveria", "qid":"122"},
       {"title":"Agave bracteosa varigata", "qid":"123"}
     ],
     "actual":"121",
@@ -92,7 +92,7 @@
     "labels":[
       {"title":"Agave bovicornuta", "qid":"124"},
       {"title":"Agave havardiana", "qid":"125"},
-      {"title":"Agave attenuata 'compound q2'", "qid":"126", "next":"plantId_9"},
+      {"title":"Agave attenuata", "qid":"126"},
       {"title":"Agave lophantha", "qid":"127"},
       {"title":"Agave bracteosa", "qid":"128"}
     ],
@@ -101,59 +101,7 @@
     "criterion":"agave",
     "type":"radio"
   },
-  "plantId_7":{
-    "title":"Compound branch 2 Question 1",
-    "media": [
-      {"type":"image", "src":"/assets/img/e_subrigida_a_200.jpg"}
-    ],
-    "labels":[
-      {"title":"Kalinkoe luciae", "qid":"129"},
-      {"title":"Agave havardiana", "qid":"130"},
-      {"title":"Echeveria 'branch 2 q2'", "qid":"131", "next":"plantId_8"},
-      {"title":"Echeveria lophantha", "qid":"132"},
-      {"title":"Echeveria gigantium", "qid":"133"}
-    ],
-    "actual":"131",
-    "category":"quiz",
-    "criterion":"echeveria",
-    "type":"radio"
-  },
-  "plantId_8":{
-    "title":"Compound branch 2 Question 2",
-    "media": [
-      {"type":"image", "src":"/assets/img/e_agavoides_b_200.jpg"}
-    ],
-    "labels":[
-      {"title":"Echeveria pulidonis", "qid":"134"},
-      {"title":"Echeveria derenbergii", "qid":"135"},
-      {"title":"Echeveria agavoides", "qid":"136"},
-      {"title":"Echeveria elegans", "qid":"137"},
-      {"title":"Echeveria subrigida", "qid":"138"}
-    ],
-    "actual":"135",
-    "category":"quiz",
-    "criterion":"echeveria",
-    "type":"radio"
-  },
-  "plantId_9":{
-    "title":"Compound branch 1 Question 2",
-    "media": [
-      {"type":"image", "src":"/assets/img/e_pulidonis_a.jpg"}
-    ],
-    "labels":[
-      {"title":"Echeveria pulidonis", "qid":"139"},
-      {"title":"Echeveria derenbergii", "qid":"140"},
-      {"title":"Echeveria agavoides", "qid":"141"},
-      {"title":"Echeveria elegans", "qid":"142"},
-      {"title":"Echeveria subrigida", "qid":"143"}
-    ],
-    "actual":"139",
-    "category":"quiz",
-    "criterion":"echeveria",
-    "type":"radio"
-  },
-
-  "survey_results":{
+  "quiz_results":{
     "type":"summary",
     "qid":"10000"
   }

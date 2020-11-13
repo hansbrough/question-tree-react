@@ -1,5 +1,9 @@
+:root {
+  --dark-charcoal: #282c34;
+}
+
 .App {
-  text-align: center;
+
 }
 
 .App-logo {
@@ -14,13 +18,12 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: var(--dark-charcoal);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
 }
 
@@ -28,11 +31,41 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/*-- Question Graph minimal styling --*/
+main {
+  margin: auto;
+  width: 960px;
+}
+nav a {
+  color: #fff;
+  padding: .25rem .5rem;
+}
+nav .active {
+  background: #fbfbfb;
+  color: var(--dark-charcoal);
+}
+.graph-ui {
+  background: lightgray;
+  margin: 1rem;
+  padding: 1rem;
+}
+.graph-ui h4 {
+  margin: .25rem;
+}
+
+.graph-ui label {
+  display: block;
+  padding-bottom: .5rem;
+}
+
+footer {
+  background: #efefef;
+
+  margin-top: 5rem;
+  padding: .5rem 0 .5rem 0;
+}
+
+footer .content-container {
+  margin: auto;
+  width: 960px;
 }

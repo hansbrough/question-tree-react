@@ -4,7 +4,8 @@
 import React, { useEffect, useState } from 'react';
 import DecisionTree from 'question-tree-core';
 
-const GraphUI = () => {
+const GraphUI = ({graph_path, question_set_path, intro_text='Introduction...'}) => {
+  console.log("graph_path:",graph_path," question_set_path:",question_set_path)
   const [decisionTreeInitializing, setDecisionTreeInitializing] = useState();
   const [decisionTreeInitialized, setDecisionTreeInitialized] = useState();
   const [currentQuestion, setCurrentQuestion] = useState();
@@ -12,14 +13,11 @@ const GraphUI = () => {
 
   useEffect(() => {
     if(!decisionTreeInitializing) {
-      const p = DecisionTree.fetch({
-        graph_path:'/data/graph/multi_node_path',
-        question_set_path:'/data/questions/multi_node_path'
-      });
+      const p = DecisionTree.fetch({graph_path, question_set_path});
       setDecisionTreeInitializing(true);
       p && p.then(setDecisionTreeInitialized);
     }
-  },[decisionTreeInitializing]);
+  },[graph_path, question_set_path, decisionTreeInitializing]);
 
   useEffect(() => {
     if(decisionTreeInitialized) {
@@ -34,25 +32,27 @@ const GraphUI = () => {
 
   return (
     <div className="graph-ui">
+      <h4>Working Example</h4>
       {!currentQuestion &&
-        <div style={{padding:".5rem"}}>Introduction...</div>
+        <div style={{padding:".5rem"}}>{intro_text}</div>
       }
       {currentQuestion &&
         <div style={{padding:".5rem"}}>
+          <p><em>Question ID:</em> "{currentQuestion.id}"</p>
           <p>{currentQuestion.title}</p>
-          <p>{currentQuestion.id}</p>
           {currentQuestion.labels
             && currentQuestion.labels.map(
               item => (
-                <label key={item.qid}>{item.title}
+                <label key={item.qid}>
                   <input type="radio" id={item.qid} onChange={handleInputChange}/>
+                  {item.title}
                 </label>
               )
           )}
         </div>
       }
-      <button onClick={() => handlePrevClick()}>Prev</button>
-      <button onClick={() => handleNextClick()}>Next</button>
+      <button onClick={handlePrevClick}>Prev</button>
+      <button onClick={handleNextClick}>Next</button>
     </div>
   );
 };

@@ -16,7 +16,7 @@
   "module_final":{
     "title":"What's Next",
     "questions": [
-      { "id":"survey_results"}
+      { "id":"quiz_results"}
     ]
   }
 }
