@@ -3,9 +3,9 @@
 */
 import React, { useEffect, useState } from 'react';
 import DecisionTree from 'question-tree-core';
+//import DecisionTree from "../utils/DecisionTree.min";
 
 const GraphUI = ({graph_path, question_set_path, intro_text='Introduction...'}) => {
-  console.log("graph_path:",graph_path," question_set_path:",question_set_path)
   const [decisionTreeInitializing, setDecisionTreeInitializing] = useState();
   const [decisionTreeInitialized, setDecisionTreeInitialized] = useState();
   const [currentQuestion, setCurrentQuestion] = useState();
@@ -24,6 +24,8 @@ const GraphUI = ({graph_path, question_set_path, intro_text='Introduction...'}) 
       console.log("DecisionTree Initialized!");
     }
   },[decisionTreeInitialized]);
+
+  const displayNextBtn = !currentQuestion || (currentQuestion && !currentQuestion.last);
 
   // event handlers
   const handleNextClick = () => setCurrentQuestion(DecisionTree.next({ labelIdx: currentAnswerId }));
@@ -51,8 +53,8 @@ const GraphUI = ({graph_path, question_set_path, intro_text='Introduction...'}) 
           )}
         </div>
       }
-      <button onClick={handlePrevClick}>Prev</button>
-      <button onClick={handleNextClick}>Next</button>
+      {currentQuestion && <button onClick={handlePrevClick}>Prev</button>}
+      {displayNextBtn && <button onClick={handleNextClick}>Next</button>}
     </div>
   );
 };
