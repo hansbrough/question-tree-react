@@ -69,3 +69,17 @@ footer .content-container {
   margin: auto;
   width: 960px;
 }
+
+dt {
+  font-weight: bold;
+  padding-bottom: .5em;
+}
+
+dd {
+  margin: 0;
+  padding-bottom: .5em;
+}
+
+dd img {
+  display: block;
+}
