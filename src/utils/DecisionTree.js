@@ -85,7 +85,8 @@ const DecisionTree = function() {
     return payload;
   };
   /*
-  * for conditional paths return length
+  * determine path length difference from Base Path
+  * for example 'detours' should add to overal path length.
   */
   const getPathDelta = (question) => {
     console.log("DecisionTree"," getPathDelta: ",question);
@@ -94,35 +95,35 @@ const DecisionTree = function() {
       const targetQuestionInBasePath = Graph.getIsQidInBasePath(question.id);
       const firstConditional = Questions.getFirstConditionalInPath(question);
       const basePathEndPt = Graph.getSequentialEndPoint(firstConditional);
-      //console.log("......basePathEndPt:",basePathEndPt);
+      console.log("......basePathEndPt:",basePathEndPt);
       const conditionalPathEndPt = firstConditional.id;
-      //console.log("......conditionalPathEndPt",conditionalPathEndPt);
+      console.log("......conditionalPathEndPt",conditionalPathEndPt);
       const basePathEndPtIdx = Graph.getIdxOfQidInModule(basePathEndPt);
       const conditionalPathEndPtIdx = Graph.getIdxOfQidInModule(conditionalPathEndPt);
       const conditionalPathEndPtDefined = Questions.getNodeById(conditionalPathEndPt);
-      //console.log("......basePathEndPtIdx:",basePathEndPtIdx);
-      //console.log("......conditionalPathEndPtIdx:",conditionalPathEndPtIdx);
-      //console.log("......QTN.getNodeById():",Question.getNodeById(conditionalPathEndPt))
+      console.log("......basePathEndPtIdx:",basePathEndPtIdx);
+      console.log("......conditionalPathEndPtIdx:",conditionalPathEndPtIdx);
+      console.log("......conditional question node:",Questions.getNodeById(conditionalPathEndPt));
       //determine path type - TODO:pull out into own method
       if(basePathEndPt && basePathEndPtIdx >= 0) {
         if(conditionalPathEndPtIdx >= 0){//Shortcut
-          //console.log("......straight shortcut");
+          console.log("......straight shortcut");
           delta = basePathEndPtIdx - conditionalPathEndPtIdx;
         } else if(targetQuestionInBasePath){//Shortcut (from mixed path)
-          //console.log("......mixed shortcut");
+          console.log("......mixed shortcut");
           delta = basePathEndPtIdx - Graph.getIdxOfQidInModule(question.id);
         } else if(conditionalPathEndPtDefined){//Detour
-          //console.log("......Detour Path, ",conditionalPathEndPt," defined just not in current module.")
+          console.log("......Detour Path, ",conditionalPathEndPt," defined just not in current module.")
           delta = 1;
         }
       } else if(!basePathEndPt && conditionalPathEndPtDefined){//detour off last base path node
-        //console.log("......detour off last base path node");
+        console.log("......detour off last base path node");
         delta = 1;
       } else {
-        //console.log("......... unknown path type!");
+        console.log("......... unknown path type!");
       }
     }
-    //console.log("...delta:",delta);
+    console.log("...delta:",delta);
     return delta;
   };
 

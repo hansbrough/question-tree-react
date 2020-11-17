@@ -11,6 +11,12 @@ const PathType = () => {
         A conditional path that contains both detour and shortcut paths.
         In the diagram below 'path 1' represents a Shortcut Path with a Graph Length of 3, while 'path 2' represents a Detour Path with a Graph Length of 5.
       </p>
+      <p>
+        The DecisionTree keeps track of the <em>Path Delta</em> and uses it to calculate the user's position within a question graph.
+        For example a user on node 4 in the diagram below would be on question 2 of 4 ( Base Path + 1). If they took a further detour to node 5 they would be on question 3 of 5 (Base Path + 2).
+        If the user took the shortcut path from node 4 to node 3 then they would be on question 3 of 3 ( Base Path + 1 -1).
+        Position data is added to question objects returned from the <em>next()</em> and <em>prev()</em> methods.
+      </p>
       <img
         src="https://user-images.githubusercontent.com/658255/28886182-624b6d4e-776d-11e7-995a-c9047e55d185.png"
         alt="Mixed Conditional path diagram"
@@ -25,6 +31,7 @@ const PathType = () => {
       <p>
         The <em>Base Path</em> is declared as questions 1 - 3 with questions 4 and 5 unreachable unless accessed by the condtional routes.
         When both graphs are taken into account - there are three routes through the question set: the <em>Base Path</em>, the Detour path and the and Detour + Shortcut path.
+        The <em>Path Length</em> is modified when uses choose a conditional path. For example going down a <em>Detour Path</em> would increase the offical <em>Path Length</em> by 1.
       </p>
       <pre><code>
         {`
@@ -37,9 +44,7 @@ const PathType = () => {
       "questions": [
         {"id":"plantId_1", "next":"plantId_2"},
         {"id":"plantId_2", "next":"plantId_3"},
-        {"id":"plantId_3"},
-        {"id":"plantId_4"},
-        {"id":"plantId_5"}
+        {"id":"plantId_3"}
       ],
       "next":"module_final"
     },

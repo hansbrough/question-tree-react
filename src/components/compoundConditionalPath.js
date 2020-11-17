@@ -36,10 +36,7 @@ const PathType = () => {
       "questions": [
         {"id":"plantId_1", "next":"plantId_2"},
         {"id":"plantId_2", "next":"plantId_3"},
-        {"id":"plantId_3"},
-        {"id":"plantId_4"},
-        {"id":"plantId_5"},
-        {"id":"plantId_6"}
+        {"id":"plantId_3"}
       ],
       "next":"module_final"
     },
