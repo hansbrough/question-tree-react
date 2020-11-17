@@ -46,7 +46,7 @@ const PathType = () => {
             "module_final":{
               "title":"Complete",
               "questions": [
-                { "id":"survey_results"}
+                { "id":"quiz_results"}
               ]
             }
           }
@@ -129,7 +129,7 @@ const PathType = () => {
               "comment":"another chance at agave bracteosa w/a different picture."
             },
 
-            "survey_results":{
+            "quiz_results":{
               "type":"summary",
               "qid":"10000"
             }

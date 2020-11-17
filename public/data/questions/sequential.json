@@ -64,11 +64,11 @@
     "actual":"120",
     "category":"quiz",
     "criterion":"agave",
-    "type":"radio",
-    "comment":"another chance at agave bracteosa w/a different picture."
+    "type":"radio"
   },
 
-  "survey_results":{
+  "quiz_results":{
+    "title":"Quiz Summary",
     "type":"summary",
     "qid":"10000"
   }

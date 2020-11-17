@@ -15,7 +15,7 @@
   "module_final":{
     "title":"Complete",
     "questions": [
-      { "id":"survey_results"}
+      { "id":"quiz_results"}
     ]
   }
 }

@@ -69,6 +69,7 @@
   },
 
   "quiz_results":{
+    "title":"Quiz Summary",
     "type":"summary",
     "qid":"10000"
   }
