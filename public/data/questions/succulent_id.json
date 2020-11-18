@@ -2,7 +2,7 @@
   "plantClassification_01":{
     "title":"What genus does this plant most likely belong to?",
     "media": [
-      {"type":"image", "src":"/assets/img/a_celsii_c_200.jpg"}
+      {"type":"image", "src":"/img/a_celsii_c_200.jpg"}
     ],
     "labels":[
       {"title":"Aloe", "qid":"100", "next":"plantClassification_11"},
@@ -20,7 +20,7 @@
   "plantClassification_02":{
     "title":"What genus does this plant most likely belong to?",
     "media": [
-      {"type":"image", "src":"/assets/img/al_aculeata_a_200.jpg"}
+      {"type":"image", "src":"/img/al_aculeata_a_200.jpg"}
     ],
     "labels":[
       {"title":"Aloe", "qid":"106"},
@@ -38,7 +38,7 @@
   "plantClassification_03":{
     "title":"What genus does this plant most likely belong to?",
     "media": [
-      {"type":"image", "src":"/assets/img/e_agavoides_b_200.jpg"}
+      {"type":"image", "src":"/img/e_agavoides_b_200.jpg"}
     ],
     "labels":[
       {"title":"Haworthia", "qid":"112", "next":"plantClassification_15"},
@@ -56,7 +56,7 @@
   "plantClassification_04":{
     "title":"What genus does this plant most likely belong to?",
     "media": [
-      {"type":"image", "src":"/assets/img/s_arachnoideum_a_200.jpg"}
+      {"type":"image", "src":"/img/s_arachnoideum_a_200.jpg"}
     ],
     "labels":[
       {"title":"Aloe", "qid":"118", "next":"plantClassification_11"},
@@ -74,7 +74,7 @@
   "plantClassification_05":{
     "title":"What genus does this plant most likely belong to?",
     "media": [
-      {"type":"image", "src":"/assets/img/g_baylissiana_a_200.jpg"}
+      {"type":"image", "src":"/img/g_baylissiana_a_200.jpg"}
     ],
     "labels":[
       {"title":"Aloe", "qid":"124", "next":"plantClassification_11"},
@@ -92,7 +92,7 @@
   "plantClassification_06":{
     "title":"What genus does this plant most likely belong to?",
     "media": [
-      {"type":"image", "src":"/assets/img/h_fasciata_a_200.jpg"}
+      {"type":"image", "src":"/img/h_fasciata_a_200.jpg"}
     ],
     "labels":[
       {"title":"Aloe", "qid":"130", "next":"plantClassification_11"},
@@ -110,7 +110,7 @@
   "plantClassification_10":{
     "title":"What genus does this plant most likely belong to?",
     "media": [
-      {"type":"image", "src":"/assets/img/a_desmetiana_c.jpg"}
+      {"type":"image", "src":"/img/a_desmetiana_c.jpg"}
     ],
     "labels":[
       {"title":"Aloe", "qid":"136"},
@@ -128,7 +128,7 @@
   "plantClassification_11":{
     "title":"What genus does this plant most likely belong to?",
     "media": [
-      {"type":"image", "src":"/assets/img/a_arborescens_a_200.jpg"}
+      {"type":"image", "src":"/img/a_arborescens_a_200.jpg"}
     ],
     "labels":[
       {"title":"Aloe", "qid":"142","next":"plantClassification_20"},
@@ -146,7 +146,7 @@
   "plantClassification_12":{
     "title":"What genus does this plant most likely belong to?",
     "media": [
-      {"type":"image", "src":"/assets/img/e_subrigida_b_200.jpg"}
+      {"type":"image", "src":"/img/e_subrigida_b_200.jpg"}
     ],
     "labels":[
       {"title":"Aloe", "qid":"148"},
@@ -164,7 +164,7 @@
   "plantClassification_13":{
     "title":"What genus does this plant most likely belong to?",
     "media": [
-      {"type":"image", "src":"/assets/img/s_royanum.jpg"}
+      {"type":"image", "src":"/img/s_royanum.jpg"}
     ],
     "labels":[
       {"title":"Aloe", "qid":"154"},
@@ -186,7 +186,7 @@
   "plantClassification_14":{
     "title":"What genus does this plant most likely belong to?",
     "media": [
-      {"type":"image", "src":"/assets/img/g_grey_ghost.jpg"}
+      {"type":"image", "src":"/img/g_grey_ghost.jpg"}
     ],
     "labels":[
       {"title":"Aloe", "qid":"160"},
@@ -204,7 +204,7 @@
   "plantClassification_15":{
     "title":"What genus does this plant most likely belong to?",
     "media": [
-      {"type":"image", "src":"/assets/img/h_limifolia_a_200.jpg"}
+      {"type":"image", "src":"/img/h_limifolia_a_200.jpg"}
     ],
     "labels":[
       {"title":"Aloe", "qid":"161"},
@@ -222,7 +222,7 @@
   "plantClassification_16":{
     "title":"What genus does this plant most likely belong to?",
     "media": [
-      {"type":"image", "src":"/assets/img/s_kindergeri.jpg"}
+      {"type":"image", "src":"/img/s_kindergeri.jpg"}
     ],
     "labels":[
       {"title":"Gasteria", "qid":"167"},
@@ -240,7 +240,7 @@
   "plantClassification_17":{
     "title":"What genus does this plant most likely belong to?",
     "media": [
-      {"type":"image", "src":"/assets/img/h_pumila_a_200.jpg"}
+      {"type":"image", "src":"/img/h_pumila_a_200.jpg"}
     ],
     "labels":[
       {"title":"Haworthia", "qid":"173"},
@@ -258,7 +258,7 @@
   "plantClassification_18":{
     "title":"What genus does this plant most likely belong to?",
     "media": [
-      {"type":"image", "src":"/assets/img/g_carinata_verrucosa.jpg"}
+      {"type":"image", "src":"/img/g_carinata_verrucosa.jpg"}
     ],
     "labels":[
       {"title":"Echeveria", "qid":"179"},
@@ -276,7 +276,7 @@
   "plantClassification_19":{
     "title":"What genus does this plant most likely belong to?",
     "media": [
-      {"type":"image", "src":"/assets/img/a_shawii.jpg"}
+      {"type":"image", "src":"/img/a_shawii.jpg"}
     ],
     "labels":[
       {"title":"Aloe", "qid":"185"},
@@ -294,7 +294,7 @@
   "plantClassification_20":{
     "title":"What genus does this plant most likely belong to?",
     "media": [
-      {"type":"image", "src":"/assets/img/a_barberae_e_200.jpg"}
+      {"type":"image", "src":"/img/a_barberae_e_200.jpg"}
     ],
     "labels":[
       {"title":"Sempervivum", "qid":"191"},
@@ -312,7 +312,7 @@
   "plantClassification_21":{
     "title":"What genus does this plant most likely belong to?",
     "media": [
-      {"type":"image", "src":"/assets/img/e_perle_von_numberg.jpg"}
+      {"type":"image", "src":"/img/e_perle_von_numberg.jpg"}
     ],
     "labels":[
       {"title":"Agave", "qid":"197"},

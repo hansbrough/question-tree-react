@@ -54,7 +54,7 @@ There are a few things to note about the above. First - the questions are groupe
   "plantClassification_01":{
     "title":"What genus does this plant most likely belong to?",
     "media": [
-      {"type":"image", "src":"/assets/img/a_celsii.jpg"}
+      {"type":"image", "src":"/img/a_celsii.jpg"}
     ],
     "labels":[
       {"title":"Aloe", "qid":"100", "next":"plantClassification_11"},

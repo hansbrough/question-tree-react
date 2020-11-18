@@ -1,7 +1,6 @@
 import React from 'react';
 //= ==== Style ===== //
 
-
 const Home = () => {
   return (
     <main>
@@ -20,13 +19,13 @@ const Home = () => {
         <dt>Base Path</dt>
         <dd>
           The sequential route through a graph which avoids any conditional paths.
-          <img src="https://user-images.githubusercontent.com/658255/28881940-98624038-775e-11e7-9a4e-c1672a51cd81.png" alt="Image of Base Path"/>
+          <img src="https://user-images.githubusercontent.com/658255/28881940-98624038-775e-11e7-9a4e-c1672a51cd81.png" alt="Base Path diagram"/>
         </dd>
 
         <dt>Compound Conditional Path</dt>
         <dd>
           A Conditional Path with it's own nested, conditional paths.
-          <img src="https://user-images.githubusercontent.com/658255/28884380-6d912060-7766-11e7-8ab9-da45c038dab2.png" alt="Image of Compound Path"/>
+          <img src="https://user-images.githubusercontent.com/658255/28884380-6d912060-7766-11e7-8ab9-da45c038dab2.png" alt="Compound Path diagram"/>
         </dd>
 
         <dt>Conditional 'Next'</dt>
@@ -42,7 +41,7 @@ const Home = () => {
         <dt>Detour Path</dt>
         <dd>
           A type of Conditional Path which exposes users to additional questions.
-          <img src="https://user-images.githubusercontent.com/658255/28882908-7f1ab4d6-7761-11e7-8c29-af40f5cd2af2.png" alt="Image of Detour Path"/>
+          <img src="https://user-images.githubusercontent.com/658255/28882908-7f1ab4d6-7761-11e7-8c29-af40f5cd2af2.png" alt="Detour Path Diagram"/>
         </dd>
 
         <dt>End Point Node</dt>
@@ -58,20 +57,20 @@ const Home = () => {
         <dt>Mixed Conditional Path</dt>
         <dd>
           A conditional path that contains both a detour and shortcut paths.
-          <img src="https://user-images.githubusercontent.com/658255/28886182-624b6d4e-776d-11e7-995a-c9047e55d185.png"  alt="Image of Mixed Path"/>
+          <img src="https://user-images.githubusercontent.com/658255/28886182-624b6d4e-776d-11e7-995a-c9047e55d185.png"  alt="Mixed Path Diagram"/>
         </dd>
 
         <dt>Multi-Branch Path</dt>
         <dd>
           A question node that has multiple, conditional paths available for user to choose from.
-          <img src="https://user-images.githubusercontent.com/658255/28884089-69aa222c-7765-11e7-8b3e-12ab5f657393.png" alt="Image of MultiBranch Path"/>
+          <img src="https://user-images.githubusercontent.com/658255/28884089-69aa222c-7765-11e7-8b3e-12ab5f657393.png" alt="MultiBranch Path Diagram"/>
         </dd>
 
         <dt>Multi-Node Path</dt>
         <dd>
           A path containing more than one node. Almost all Sequential paths will be multi-node. Conditional Paths might often contain just a single node.
           <br />
-          <img src="https://user-images.githubusercontent.com/658255/28883656-0bdc5f26-7764-11e7-8308-d2ccc0bae480.png" alt="Image of MultiNode Path"/>
+          <img src="https://user-images.githubusercontent.com/658255/28883656-0bdc5f26-7764-11e7-8308-d2ccc0bae480.png" alt="MultiNode Path Diagram"/>
         </dd>
 
         <dt>Path Length</dt>
@@ -112,7 +111,7 @@ const Home = () => {
         <dt>Shortcut Path</dt>
         <dd>
           A type of Conditional Path that allows users to bypass questions on the Base Path.
-          <img src="https://user-images.githubusercontent.com/658255/28883099-294ebac4-7762-11e7-8e54-0b982504954f.png" alt="Image of Shortcut Path"/>
+          <img src="https://user-images.githubusercontent.com/658255/28883099-294ebac4-7762-11e7-8e54-0b982504954f.png" alt="Shortcut Path Diagram"/>
         </dd>
 
         <dt>Start Point Node</dt>

@@ -84,8 +84,14 @@ const GraphUI = ({graph_path, question_set_path, intro_text='Introduction...'}) 
         <div style={{padding:".5rem"}}>
           <p><em>Question ID:</em> "{currentQuestion.id}"</p>
           <p><em>Module ID:</em> "{currentQuestion.module}"</p>
+          <p><em>Graph Position:</em> {currentQuestion.position.current} of {currentQuestion.position.total} nodes</p>
           <hr></hr>
           <p>{currentQuestion.title}</p>
+          {currentQuestion.media &&
+            currentQuestion.media.map(item => item.type==='image' &&
+              <img key={currentQuestion.id} src={item.src} alt="" />
+            )
+          }
           {currentQuestion.labels
             && currentQuestion.labels.map(
               item => (
@@ -97,7 +103,7 @@ const GraphUI = ({graph_path, question_set_path, intro_text='Introduction...'}) 
           )}
 
           {isFinalModule &&
-            <div style={{marginBottom:"1rem",marginTop:"1rem"}}>You got <b>{correctResponses.length}</b> out of <b>{correctResponses.length + inCorrectResponses.length}</b> correct.</div>
+            <div style={{marginBottom:"1rem",marginTop:"1rem"}}>You got <b>{correctResponses.length}</b> out of <b>{correctResponses.length + inCorrectResponses.length}</b> questions correct.</div>
           }
         </div>
       }

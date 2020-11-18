@@ -28,7 +28,7 @@
   "plantClassification_1":{
     "title":"What genus does this plant most likely belong to?",
     "media": [
-      {"type":"image", "src":"/assets/img/a_barberae_e_200.jpg"}
+      {"type":"image", "src":"/img/a_barberae_e_200.jpg"}
     ],
     "labels":[
       {"title":"Aloe", "qid":"100"},
@@ -45,7 +45,7 @@
   "plantId_1":{
     "title":"Which of the following is the name of this plant?",
     "media": [
-      {"type":"image", "src":"/assets/img/al_aculeata_a_200.jpg"}
+      {"type":"image", "src":"/img/al_aculeata_a_200.jpg"}
     ],
     "labels":[
       {"title":"Aloe aculeata", "qid":"105"},
@@ -61,7 +61,7 @@
   "plantId_2":{
     "title":"Which of the following is the name of this plant?",
     "media": [
-      {"type":"image", "src":"/assets/img/a_brevifolia_c_200.jpg"}
+      {"type":"image", "src":"/img/a_brevifolia_c_200.jpg"}
     ],
     "labels":[
       {"title":"Aloe arborescens", "qid":"109"},
@@ -78,7 +78,7 @@
   "plantId_3":{
     "title":"Which of the following is the name of this plant?",
     "media": [
-      {"type":"image", "src":"/assets/img/a_bracteosa_d_200.jpg"}
+      {"type":"image", "src":"/img/a_bracteosa_d_200.jpg"}
     ],
     "labels":[
       {"title":"Agave celsii", "qid":"114"},
@@ -95,7 +95,7 @@
   "plantId_4":{
     "title":"Which of the following is the name of this plant?",
     "media": [
-      {"type":"image", "src":"/assets/img/a_bracteosa_h_200.jpg"}
+      {"type":"image", "src":"/img/a_bracteosa_h_200.jpg"}
     ],
     "labels":[
       {"title":"Agave celsii", "qid":"114"},
@@ -113,7 +113,7 @@
   "plantId_5":{
     "title":"Which of the following is the name of this plant?",
     "media": [
-      {"type":"image", "src":"/assets/img/a_bracteosa_frost_200.jpg"}
+      {"type":"image", "src":"/img/a_bracteosa_frost_200.jpg"}
     ],
     "labels":[
       {"title":"Agave bracteosa 'Calamar'", "qid":"119"},
@@ -130,7 +130,7 @@
   "plantId_6":{
     "title":"Which of the following is the name of this plant?",
     "media": [
-      {"type":"image", "src":"/assets/img/a_attenuata_a_200.jpg"}
+      {"type":"image", "src":"/img/a_attenuata_a_200.jpg"}
     ],
     "labels":[
       {"title":"Agave bovicornuta", "qid":"124"},

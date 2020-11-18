@@ -63,7 +63,7 @@ const PathType = () => {
             "plantId_1":{
               "title":"Which of the following is the name of this plant?",
               "media": [
-                {"type":"image", "src":"/assets/img/al_aculeata_a_200.jpg"}
+                {"type":"image", "src":"/img/al_aculeata_a_200.jpg"}
               ],
               "labels":[
                 {"title":"Aloe aculeata", "qid":"105"},
@@ -79,7 +79,7 @@ const PathType = () => {
             "plantId_2":{
               "title":"Which of the following is the name of this plant?",
               "media": [
-                {"type":"image", "src":"/assets/img/a_brevifolia_c_200.jpg"}
+                {"type":"image", "src":"/img/a_brevifolia_c_200.jpg"}
               ],
               "labels":[
                 {"title":"Aloe arborescens", "qid":"109"},
@@ -96,7 +96,7 @@ const PathType = () => {
             "plantId_3":{
               "title":"Which of the following is the name of this plant?",
               "media": [
-                {"type":"image", "src":"/assets/img/a_bracteosa_d_200.jpg"}
+                {"type":"image", "src":"/img/a_bracteosa_d_200.jpg"}
               ],
               "labels":[
                 {"title":"Agave celsii", "qid":"114"},
@@ -113,7 +113,7 @@ const PathType = () => {
             "plantId_4":{
               "title":"Which of the following is the name of this plant?",
               "media": [
-                {"type":"image", "src":"/assets/img/a_bracteosa_h_200.jpg"}
+                {"type":"image", "src":"/img/a_bracteosa_h_200.jpg"}
               ],
               "labels":[
                 {"title":"Agave vilamoriana", "qid":"119"},
