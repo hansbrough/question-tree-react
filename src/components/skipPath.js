@@ -23,7 +23,7 @@ const PathType = () => {
       <h3>A closer look at the json files</h3>
       <b>Module Graph JSON</b>
       <p>
-      some helpful commments...
+      The <em>Base Path</em> in this example is 3 nodes long. The <em>Path Length</em> will stay at 3 unless the user chooses the shortcut option in the first question.
       </p>
       <pre><code>
         {`
@@ -51,7 +51,8 @@ const PathType = () => {
       </code></pre>
       <b>Questions JSON</b>
       <p>
-      some helpful commments...
+      The user can skip question 2 by choosing the shortcut option in question 1. This reduces the <em>Path Length</em> from 3 to 2.
+      The option defines a 'next' property and triggers a jump to a node further in the <em>Base Path</em>
       </p>
       <pre><code>
         {`

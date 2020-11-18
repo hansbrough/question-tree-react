@@ -24,6 +24,7 @@ const PathType = () => {
       <p>
         The <em>Base Path</em> is defined below as questions 1, 2 and 3.
         It's not possible to get to questions 4, 5, or 6 with out following a conditional path.
+        Don't include conditional questions in the module graph. In this example the conditional questions 4 - 6 are listed in the questions graph. 
       </p>
       <pre><code>
         {`

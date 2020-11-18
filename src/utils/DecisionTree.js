@@ -20,8 +20,7 @@ const DecisionTree = function() {
     const { base_url: baseUrl='', graph_path, question_set_path, defaultScreen='introduction' } = options;
     const graphPath = graph_path && `${baseUrl}${graph_path}`;
     const questionSetPath = question_set_path && `${baseUrl}${question_set_path}`;
-    setDefaultScreen(defaultScreen);
-    setCurrentQuestion();//clear any ref to an old currentQuestion before fetching a new set of questions
+    reset();//clear ref to old vals from previous graph.
     return Promise.all([Graph.fetch(graphPath), Questions.fetch(questionSetPath)]);
   };
 
@@ -89,7 +88,7 @@ const DecisionTree = function() {
   * for example 'detours' should add to overal path length.
   */
   const getPathDelta = (question) => {
-    //console.log("DecisionTree"," getPathDelta: ",question);
+    console.log("DecisionTree"," getPathDelta: ",question);
     let delta = 0;
     if(question && question.conditional) {
       const targetQuestionInBasePath = Graph.getIsQidInBasePath(question.id);
@@ -123,7 +122,7 @@ const DecisionTree = function() {
         //console.log("......... unknown path type!");
       }
     }
-    //console.log("...delta:",delta);
+    console.log("...delta:",delta);
     return delta;
   };
 
@@ -165,12 +164,23 @@ const DecisionTree = function() {
       case 'delete':
         history = history.slice(0, history.length - 1);//remove current question.
         break;
+      case 'clear':
+        history = [];
+        break;
       default:
         break;
     }
     //console.log("...history:",history)
   };
   const updateRunningDelta = (question) => runningDelta += getPathDelta(question);
+
+  //clear any refs to prev vals
+  const reset = () => {
+    setDefaultScreen(defaultScreen);
+    setCurrentQuestion();
+    setHistory('clear');
+    runningDelta = 0;
+  };
 
   /*-- called from client code --*/
   // finds and sets the 'next' question as the 'current question'.
