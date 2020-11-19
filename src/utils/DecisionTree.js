@@ -117,7 +117,7 @@ const DecisionTree = function() {
         //console.log("......detour off last base path node");
         delta = 1;
       } else {
-        //console.log("......... unknown path type!");
+        console.warn("DecisionTree: unknown path type");
       }
     }
     delta = (!!direction) ? delta : -delta;
