@@ -2,8 +2,8 @@
 * Simple example of using the 'question-tree-core' package in React.
 */
 import React, { useEffect, useState } from 'react';
-//import DecisionTree from 'question-tree-core';
-import DecisionTree from "../utils/DecisionTree";// or debug w/the unpackaged files
+import DecisionTree from 'question-tree-core';
+//import DecisionTree from "../utils/DecisionTree";// or debug w/the unpackaged files
 
 const GraphUI = ({graph_path, question_set_path, intro_text='Introduction...'}) => {
   const [decisionTreeInitializing, setDecisionTreeInitializing] = useState();

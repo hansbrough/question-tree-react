@@ -18,7 +18,7 @@ const DecisionTree = function() {
   * fetch and ingest given Module Graph and Question set
   */
   this.fetch = (options={}) => {
-    const { base_url: baseUrl='', graph_path, question_set_path, defaultScreen='introduction' } = options;
+    const { base_url: baseUrl='', graph_path, question_set_path } = options;
     const graphPath = graph_path && `${baseUrl}${graph_path}`;
     const questionSetPath = question_set_path && `${baseUrl}${question_set_path}`;
     reset();//clear ref to old vals from previous graph.
@@ -30,7 +30,7 @@ const DecisionTree = function() {
   this.hasPreviousQuestion = () => history.length > 1;
   //
   const getTotalQuestionCount = (question) => {
-    console.log("DecisionTree"," getTotalQuestionCount");
+    //console.log("DecisionTree"," getTotalQuestionCount");
     updateRunningDelta(getPathDelta(question));
     return Graph.getBasePathLength() + runningDelta;
   };
@@ -124,7 +124,7 @@ const DecisionTree = function() {
 
     // side effect - when backing out of conditional node, flip the conditional prop.
     if( !direction && delta !== 0 ) {
-      console.log(".... remove conditional prop from:", question.id);
+      //console.log(".... remove conditional prop from:", question.id);
       Questions.updateNodeById(question.id, { conditional: false })
     }
 
@@ -201,7 +201,7 @@ const DecisionTree = function() {
   // finds and sets the 'next' question as the 'current question'.
   // return question to caller.
   this.next = (config) => {
-    console.log('-----DecisionTree next-----');
+    //console.log('-----DecisionTree next-----');
     //console.log("...config:",config);
     const question = { views: 0 };
     let firstModuleQuestion;
@@ -237,7 +237,7 @@ const DecisionTree = function() {
       //console.log('... question before being extended: ',question);
       Object.assign(question, Questions.getNodeById(question.id), { module : currentModuleId }, config);
       question.views++;
-      console.log('....question: ',question);
+      //console.log('....question: ',question);
     }
 
     setCurrentQuestion(question);
@@ -247,25 +247,19 @@ const DecisionTree = function() {
 
   //
   this.prev = () => {
-    console.log('-----DecisionTree prev-----');
+    //console.log('-----DecisionTree prev-----');
     let   question  = null;
     const len       = history.length;
     setDirection(0);
     if( len > 0 ){
       const removedQuestionId = setHistory('delete');
       const delta = getPathDelta(Questions.getNodeById(removedQuestionId));
-      console.log("...delta:",delta)
       //when backing out of a conditional question - recalc of path length needed.
       updateRunningDelta(delta);
-      // if( delta !== 0 ) {
-      //   console.log(".... remove conditional prop from:", removedQuestionId);
-      //   Questions.updateNodeById(removedQuestionId, { conditional: false })
-      // }
       question = Questions.getNodeById( history.pop() );
     }
     //keep internal state in sync w/UI change
-    //console.log('... ',question);
-    question.views++;
+    question && question.views++;
     setCurrentQuestion(question);//add question back as currentQuesion
     setCurrentModuleId(question.module);
 

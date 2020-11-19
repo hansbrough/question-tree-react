@@ -157,9 +157,7 @@ const Graph = function() {
   * defaults to null value if question not found in graph base path (e.g. 'detour' question)
   */
   this.getSequentialEndPoint = question => {
-    //console.log("Graph getSequentialEndPoint question:",question);
     const prevGraphQuestion = getQuestionById(question.previous);
-    //console.log("...prevGraphQuestion:",prevGraphQuestion)
     return (prevGraphQuestion) ? prevGraphQuestion.next : null;
   };
 };
