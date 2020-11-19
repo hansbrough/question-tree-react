@@ -11,6 +11,7 @@ const DecisionTree = function() {
       currentModuleId  = null,
       currentQuestion  = null,
       defaultScreen    = null,
+      direction        = 1,
       history          = [];
 
   /*
@@ -29,8 +30,8 @@ const DecisionTree = function() {
   this.hasPreviousQuestion = () => history.length > 1;
   //
   const getTotalQuestionCount = (question) => {
-    //console.log("DecisionTree"," getTotalQuestionCount");
-    updateRunningDelta(question);
+    console.log("DecisionTree"," getTotalQuestionCount");
+    updateRunningDelta(getPathDelta(question));
     return Graph.getBasePathLength() + runningDelta;
   };
   /*
@@ -85,25 +86,22 @@ const DecisionTree = function() {
   };
   /*
   * determine path length difference from Base Path
-  * for example 'detours' should add to overal path length.
+  * for example when moving forward through graph, 'detours' should add to overal path length.
+  * direction thru graph helps to determine value.
   */
   const getPathDelta = (question) => {
-    console.log("DecisionTree"," getPathDelta: ",question);
+    //console.log("-- DecisionTree"," getPathDelta: ",question);
     let delta = 0;
+
     if(question && question.conditional) {
       const targetQuestionInBasePath = Graph.getIsQidInBasePath(question.id);
       const firstConditional = Questions.getFirstConditionalInPath(question);
       const basePathEndPt = Graph.getSequentialEndPoint(firstConditional);
-      //console.log("......basePathEndPt:",basePathEndPt);
       const conditionalPathEndPt = firstConditional.id;
-      //console.log("......conditionalPathEndPt",conditionalPathEndPt);
       const basePathEndPtIdx = Graph.getIdxOfQidInModule(basePathEndPt);
       const conditionalPathEndPtIdx = Graph.getIdxOfQidInModule(conditionalPathEndPt);
       const conditionalPathEndPtDefined = Questions.getNodeById(conditionalPathEndPt);
-      //console.log("......basePathEndPtIdx:",basePathEndPtIdx);
-      //console.log("......conditionalPathEndPtIdx:",conditionalPathEndPtIdx);
-      //console.log("......conditional question node:",Questions.getNodeById(conditionalPathEndPt));
-      //determine path type - TODO:pull out into own method
+
       if(basePathEndPt && basePathEndPtIdx >= 0) {
         if(conditionalPathEndPtIdx >= 0){//Shortcut
           //console.log("......straight shortcut");
@@ -122,7 +120,14 @@ const DecisionTree = function() {
         //console.log("......... unknown path type!");
       }
     }
-    console.log("...delta:",delta);
+    delta = (!!direction) ? delta : -delta;
+
+    // side effect - when backing out of conditional node, flip the conditional prop.
+    if( !direction && delta !== 0 ) {
+      console.log(".... remove conditional prop from:", question.id);
+      Questions.updateNodeById(question.id, { conditional: false })
+    }
+
     return delta;
   };
 
@@ -132,8 +137,11 @@ const DecisionTree = function() {
     //console.log("DecisionTree setCurrentQuestion")
     if(question) {
       setHistory('add', question);//add qid to history stack.
-      const prevQuestionId  = (currentQuestion) ? currentQuestion.id : defaultScreen;
-      question = Object.assign(question, {previous:prevQuestionId});
+      // only when moving fwd add 'previous' property.
+      if(direction) {
+        const prevQuestionId  = (currentQuestion) ? currentQuestion.id : defaultScreen;
+        question = Object.assign(question, { previous: prevQuestionId });
+      }
       const positionData    = getQuestionPosition(question);
 
       //console.log("...positionData:",positionData);
@@ -155,24 +163,31 @@ const DecisionTree = function() {
     }
 };
   const setDefaultScreen = val => defaultScreen = val;
+  // updates path history. returns question id(s) operated on.
   const setHistory = (verb, obj) => {
     //console.log('setHistory:',verb, obj);
+    let operand;
     switch(verb) {
       case 'add':
+        operand = obj.id;
         history.push( obj.id );
         break;
       case 'delete':
+        operand = history[history.length - 1];
         history = history.slice(0, history.length - 1);//remove current question.
         break;
       case 'clear':
+        operand = history;
         history = [];
         break;
       default:
         break;
     }
-    //console.log("...history:",history)
+    //console.log("...history after operation:",history)
+    return operand;
   };
-  const updateRunningDelta = (question) => runningDelta += getPathDelta(question);
+  const updateRunningDelta = (val) => runningDelta += val;
+  const setDirection = val => direction = val;
 
   //clear any refs to prev vals
   const reset = () => {
@@ -190,27 +205,28 @@ const DecisionTree = function() {
     //console.log("...config:",config);
     const question = { views: 0 };
     let firstModuleQuestion;
+    setDirection(1);
     if( !currentQuestion ) {//0 case. first question.
-      console.log("...first question");
+      //console.log("...first question");
       setCurrentModuleId( Graph.getNextModuleId() );
       firstModuleQuestion = Graph.getFirstQuestionInModule(currentModuleId);
       Object.assign(question, firstModuleQuestion, { first: true });
     } else {
-      console.log("...not first question:",currentQuestion);
+      //console.log("...not first question:",currentQuestion);
       const nextModuleId    = Graph.getNextModuleId( currentModuleId );
       const nextQuestionObj = getNextQuestionId( currentQuestion, config );
-      console.log("...nextModuleId:",nextModuleId," nextQuestionObj:",nextQuestionObj);
+      //console.log("...nextModuleId:",nextModuleId," nextQuestionObj:",nextQuestionObj);
       if(nextQuestionObj.id) {//use next question in this module
-        console.log("...currentQuestion is followed by another question in same module");
+        //console.log("...currentQuestion is followed by another question in same module");
         const graphNextQuestion = getNextQuestionFromGraph(nextQuestionObj) || {};
         Object.assign(question, nextQuestionObj, graphNextQuestion);
       } else if(nextModuleId && nextModuleId !== 'module_final') {//jump to next module
-        console.log("...go to next module");
+        //console.log("...go to next module");
         setCurrentModuleId( nextModuleId );
         firstModuleQuestion = Graph.getFirstQuestionInModule(nextModuleId);
         Object.assign(question, firstModuleQuestion);
       } else {//account for last module.
-        console.log("...graph complete");
+        //console.log("...graph complete");
         setCurrentModuleId( nextModuleId );
         firstModuleQuestion = Graph.getFirstQuestionInModule(nextModuleId);
         Object.assign(question, firstModuleQuestion);
@@ -231,12 +247,20 @@ const DecisionTree = function() {
 
   //
   this.prev = () => {
-    //console.log('prev');
+    console.log('-----DecisionTree prev-----');
     let   question  = null;
     const len       = history.length;
+    setDirection(0);
     if( len > 0 ){
-      setHistory('delete');
-      //console.log('...', history);
+      const removedQuestionId = setHistory('delete');
+      const delta = getPathDelta(Questions.getNodeById(removedQuestionId));
+      console.log("...delta:",delta)
+      //when backing out of a conditional question - recalc of path length needed.
+      updateRunningDelta(delta);
+      // if( delta !== 0 ) {
+      //   console.log(".... remove conditional prop from:", removedQuestionId);
+      //   Questions.updateNodeById(removedQuestionId, { conditional: false })
+      // }
       question = Questions.getNodeById( history.pop() );
     }
     //keep internal state in sync w/UI change

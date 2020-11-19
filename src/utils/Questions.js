@@ -59,6 +59,7 @@ const Questions = function() {
   */
   this.update = (question) => this.store[question.id] = question;
 
+  this.updateNodeById = (id, options={}) => id && Object.assign(this.store[id], options);
 };
 
 export default new Questions();
