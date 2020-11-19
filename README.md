@@ -4,6 +4,8 @@ A project that uses a json formatted graph and json formatted questions to navig
 
 ['question-tree-core' available on NPM](https://www.npmjs.com/package/question-tree-core)
 
+[Deployed version of this repo](http://calculating-goat.surge.sh/)
+
 [Original Question Tree Project on Github Pages w/ a demo app built in Backbone](https://hansbrough.github.io/question-tree/)
 
 ### Overview of the Pieces
