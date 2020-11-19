@@ -40,7 +40,7 @@ const GraphUI = ({graph_path, question_set_path, intro_text='Introduction...'}) 
     }
   },[currentQuestion]);
 
-  const displayNextBtn = !currentQuestion || (currentQuestion && !currentQuestion.last);
+  const displayNextBtn = !currentQuestion || (currentQuestion && currentAnswerId );//&& !currentQuestion.last
 
   // App logic keeps track of user answers and how the results are displayed
   // substitute your own app logic for the example below.
@@ -69,7 +69,9 @@ const GraphUI = ({graph_path, question_set_path, intro_text='Introduction...'}) 
       }
     }
     // 2. get the next question based on the users last response
-    setCurrentQuestion(DecisionTree.next({ labelIdx: currentAnswerId }))
+    setCurrentQuestion(DecisionTree.next({ labelIdx: currentAnswerId }));
+    // 3. reset
+    setCurrentAnswerId()
   };
   const handlePrevClick = () => setCurrentQuestion(DecisionTree.prev());
   const handleInputChange = e => setCurrentAnswerId(e.target.id)
@@ -107,8 +109,8 @@ const GraphUI = ({graph_path, question_set_path, intro_text='Introduction...'}) 
           }
         </div>
       }
-      {currentQuestion && <button onClick={handlePrevClick}>Prev</button>}
-      {displayNextBtn && <button onClick={handleNextClick}>Next</button>}
+      <button onClick={handlePrevClick} disabled={!DecisionTree.hasPreviousQuestion()}>Prev</button>
+      <button onClick={handleNextClick} disabled={!displayNextBtn}>Next</button>
     </div>
   );
 };
