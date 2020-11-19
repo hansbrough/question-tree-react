@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/question-tree-react-example/static/css/main.c27f13c8.chunk.css",
+    "main.js": "/question-tree-react-example/static/js/main.b83ec5bb.chunk.js",
+    "main.js.map": "/question-tree-react-example/static/js/main.b83ec5bb.chunk.js.map",
+    "runtime-main.js": "/question-tree-react-example/static/js/runtime-main.f776b214.js",
+    "runtime-main.js.map": "/question-tree-react-example/static/js/runtime-main.f776b214.js.map",
+    "static/js/2.e3c529e8.chunk.js": "/question-tree-react-example/static/js/2.e3c529e8.chunk.js",
+    "static/js/2.e3c529e8.chunk.js.map": "/question-tree-react-example/static/js/2.e3c529e8.chunk.js.map",
+    "index.html": "/question-tree-react-example/index.html",
+    "static/css/main.c27f13c8.chunk.css.map": "/question-tree-react-example/static/css/main.c27f13c8.chunk.css.map",
+    "static/js/2.e3c529e8.chunk.js.LICENSE.txt": "/question-tree-react-example/static/js/2.e3c529e8.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f776b214.js",
+    "static/js/2.e3c529e8.chunk.js",
+    "static/css/main.c27f13c8.chunk.css",
+    "static/js/main.b83ec5bb.chunk.js"
+  ]
+}
