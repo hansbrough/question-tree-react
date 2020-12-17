@@ -52,6 +52,13 @@ const Questions = function() {
     }
     return node;
   }
+  /*
+  * return the full answer object given an answer id
+  */
+  this.getAnswerById = (question={}, labelId) => {
+    const {labels=[]} = question;
+    return labelId && labels && labels.find(item => item.qid === labelId);
+  }
   //
   this.getNodeById = (id) => id && this.store && this.store[id];
   /*

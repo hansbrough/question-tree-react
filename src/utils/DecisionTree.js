@@ -6,7 +6,6 @@ import Graph from "./Graph";
 import Questions from "./Questions";
 
 const DecisionTree = function() {
-  //console.log("DecisionTree init")
   let runningDelta     = 0,
       currentModuleId  = null,
       currentQuestion  = null,
@@ -30,7 +29,6 @@ const DecisionTree = function() {
   this.hasPreviousQuestion = () => history.length > 1;
   //
   const getTotalQuestionCount = (question) => {
-    //console.log("DecisionTree"," getTotalQuestionCount");
     updateRunningDelta(getPathDelta(question));
     return Graph.getBasePathLength() + runningDelta;
   };
@@ -44,12 +42,8 @@ const DecisionTree = function() {
   * by default uses 'next' question id from the current question.
   */
   const getNextQuestionFromGraph = (config) => {
-    //console.log("DecisionTree"," getNextQuestionFromGraph config:",config);
     const nextQuestionId = (config) ? config.id : currentQuestion.next;
-    //console.log("...nextQuestionId:",nextQuestionId)
-    //if next question obj passed in ... determine it's sequential 'next' question
     const question      = Graph.getNextModuleQuestion(currentModuleId, nextQuestionId);
-    //console.log("...question:",question)
     return question;
   };
   /*
@@ -57,7 +51,6 @@ const DecisionTree = function() {
   * return object with id and a conditional value if next question is conditional (not from module graph)
   */
   const getNextQuestionId = (question, options={}) => {
-    //console.log("getNextQuestionId: ",question, options);
     const payload = { id: null };
     const {labelIdx}  = options;
     const {labels} = question;
@@ -65,23 +58,18 @@ const DecisionTree = function() {
     const lastQuestion = Graph.getQidIsLastInModuleBasePath(question.id);
 
     if(answer && answer.next) {
-      //console.log("... conditional by labelIdx: ",labelIdx);
       payload.id = answer.next;
       payload.conditional = true;
     } else if(question.next) {
-      //console.log("... by graph");
       payload.id = question.next;
     } else if(question.conditional && lastQuestion) {
       //question is conditional but last in module, advance to next module.
       payload.id = null;
     } else if(question.conditional) {
-      //console.log("... no next value. return to base path.");
       question = Questions.getFirstConditionalInPath(question);
       payload.id = Graph.getSequentialEndPoint(question);
-      //console.log(".... base path next id:",payload.id);
     }
     payload.module = Graph.getModuleIdByQid(payload.id);
-    //console.log("......payload:",payload);
     return payload;
   };
   /*
@@ -90,7 +78,6 @@ const DecisionTree = function() {
   * direction thru graph helps to determine value.
   */
   const getPathDelta = (question) => {
-    //console.log("-- DecisionTree"," getPathDelta: ",question);
     let delta = 0;
 
     if(question && question.conditional) {
@@ -104,17 +91,13 @@ const DecisionTree = function() {
 
       if(basePathEndPt && basePathEndPtIdx >= 0) {
         if(conditionalPathEndPtIdx >= 0){//Shortcut
-          //console.log("......straight shortcut");
           delta = basePathEndPtIdx - conditionalPathEndPtIdx;
         } else if(targetQuestionInBasePath){//Shortcut (from mixed path)
-          //console.log("......mixed shortcut");
           delta = basePathEndPtIdx - Graph.getIdxOfQidInModule(question.id);
         } else if(conditionalPathEndPtDefined){//Detour
-          //console.log("......Detour Path, ",conditionalPathEndPt," defined just not in current module.")
           delta = 1;
         }
       } else if(!basePathEndPt && conditionalPathEndPtDefined){//detour off last base path node
-        //console.log("......detour off last base path node");
         delta = 1;
       } else {
         console.warn("DecisionTree: unknown path type");
@@ -124,7 +107,6 @@ const DecisionTree = function() {
 
     // side effect - when backing out of conditional node, flip the conditional prop.
     if( !direction && delta !== 0 ) {
-      //console.log(".... remove conditional prop from:", question.id);
       Questions.updateNodeById(question.id, { conditional: false })
     }
 
@@ -134,7 +116,6 @@ const DecisionTree = function() {
   /*-- setters --*/
   const setCurrentModuleId = val => currentModuleId = val;
   const setCurrentQuestion = (question) => {
-    //console.log("DecisionTree setCurrentQuestion")
     if(question) {
       setHistory('add', question);//add qid to history stack.
       // only when moving fwd add 'previous' property.
@@ -143,20 +124,15 @@ const DecisionTree = function() {
         question = Object.assign(question, { previous: prevQuestionId });
       }
       const positionData    = getQuestionPosition(question);
-
-      //console.log("...positionData:",positionData);
       //determine if is second to last and last question.
       if( positionData.total / positionData.current === 1){
-        //console.log("......this is the last question");
         Object.assign(question, {last:true});
       }
       if( positionData.total - positionData.current === 1){
-        //console.log("......this is the penultimate question")
         Object.assign(question, {penultimate:true});
       }
 
       currentQuestion = Object.assign(question, {position:positionData});
-      //console.log("... currentQuestion has been extended with 'previous' property");
       Questions.update(currentQuestion);//sync questions store
     } else {
       currentQuestion = null;
@@ -165,7 +141,6 @@ const DecisionTree = function() {
   const setDefaultScreen = val => defaultScreen = val;
   // updates path history. returns question id(s) operated on.
   const setHistory = (verb, obj) => {
-    //console.log('setHistory:',verb, obj);
     let operand;
     switch(verb) {
       case 'add':
@@ -183,7 +158,6 @@ const DecisionTree = function() {
       default:
         break;
     }
-    //console.log("...history after operation:",history)
     return operand;
   };
   const updateRunningDelta = (val) => runningDelta += val;
@@ -191,6 +165,7 @@ const DecisionTree = function() {
 
   //clear any refs to prev vals
   const reset = () => {
+    setCurrentModuleId( Graph.getNextModuleId() );
     setDefaultScreen(defaultScreen);
     setCurrentQuestion();
     setHistory('clear');
@@ -201,32 +176,30 @@ const DecisionTree = function() {
   // finds and sets the 'next' question as the 'current question'.
   // return question to caller.
   this.next = (config) => {
-    //console.log('-----DecisionTree next-----');
-    //console.log("...config:",config);
     const question = { views: 0 };
     let firstModuleQuestion;
     setDirection(1);
     if( !currentQuestion ) {//0 case. first question.
-      //console.log("...first question");
       setCurrentModuleId( Graph.getNextModuleId() );
       firstModuleQuestion = Graph.getFirstQuestionInModule(currentModuleId);
       Object.assign(question, firstModuleQuestion, { first: true });
     } else {
-      //console.log("...not first question:",currentQuestion);
       const nextModuleId    = Graph.getNextModuleId( currentModuleId );
       const nextQuestionObj = getNextQuestionId( currentQuestion, config );
-      //console.log("...nextModuleId:",nextModuleId," nextQuestionObj:",nextQuestionObj);
+      const {labelIdx}  = config;
+      const answer = Questions.getAnswerById(currentQuestion, labelIdx);
       if(nextQuestionObj.id) {//use next question in this module
-        //console.log("...currentQuestion is followed by another question in same module");
         const graphNextQuestion = getNextQuestionFromGraph(nextQuestionObj) || {};
         Object.assign(question, nextQuestionObj, graphNextQuestion);
       } else if(nextModuleId && nextModuleId !== 'module_final') {//jump to next module
-        //console.log("...go to next module");
         setCurrentModuleId( nextModuleId );
         firstModuleQuestion = Graph.getFirstQuestionInModule(nextModuleId);
         Object.assign(question, firstModuleQuestion);
+      } else if(answer.reset) {//return to first question in first module.
+        reset();
+        firstModuleQuestion = Graph.getFirstQuestionInModule(currentModuleId);
+        Object.assign(question, firstModuleQuestion);
       } else {//account for last module.
-        //console.log("...graph complete");
         setCurrentModuleId( nextModuleId );
         firstModuleQuestion = Graph.getFirstQuestionInModule(nextModuleId);
         Object.assign(question, firstModuleQuestion);
@@ -234,10 +207,8 @@ const DecisionTree = function() {
     }
 
     if(question) {
-      //console.log('... question before being extended: ',question);
       Object.assign(question, Questions.getNodeById(question.id), { module : currentModuleId }, config);
       question.views++;
-      //console.log('....question: ',question);
     }
 
     setCurrentQuestion(question);
@@ -247,7 +218,6 @@ const DecisionTree = function() {
 
   //
   this.prev = () => {
-    //console.log('-----DecisionTree prev-----');
     let   question  = null;
     const len       = history.length;
     setDirection(0);
